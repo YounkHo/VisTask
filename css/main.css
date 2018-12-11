@@ -1,0 +1,18 @@
+.tooltips {
+    position: absolute;
+    width: auto;
+    height: auto;
+    max-width: 300px;
+    color: rgb(255, 255, 255);
+    font: 14px/21px "Microsoft YaHei";
+    text-align: left;
+    background-color: rgba(50, 50, 50, 0.7);
+    border-width: 1px;
+    border-color: rgba(233, 233, 233, 0.7);
+    border-radius: 4px;
+    padding: 10px;
+    fill: white;
+    border-style: solid;
+    z-index: 9999999;
+    pointer-events: none;
+}
