@@ -8,7 +8,7 @@ function draw_calendar_chart(width, height, cellSize, item_id, year, containerId
     // 定义颜色函数，使用量化比例尺映射，即定义域为连续的，从-0.05到0.05，而值域是离散的颜色值
     var color = d3.scaleQuantize()
         .domain([0, 100])
-        .range(["#a50026", "#d73027", "#f46d43", "#fdae61", "#fee08b", "#ffffbf", "#d9ef8b", "#a6d96a", "#66bd63", "#1a9850", "#006837"]);
+        .range(["#a6cee3","#1f78b4","#b2df8a","#33a02c","#fb9a99","#e31a1c","#fdbf6f","#ff7f00","#cab2d6","#6a3d9a"]);
 
     // 定义10个svg组，分别用来展示从1990年到2010年的数据
     var svg = d3.select("#"+containerId)
@@ -69,12 +69,10 @@ function draw_calendar_chart(width, height, cellSize, item_id, year, containerId
           })
         // 个人理解，这里的.object()函数类似于call()函数，用来将定义的分组机制应用到csv数据上,返回分组后的对象，官网对nest().object()的解释：Applies the nest operator to the specified array, returning a nested object.有没有醍醐灌顶的感觉，哈哈
         .object(csv);
-        console.log(datas)
         time=[]
         for(var i=0;i<datas.length;i++){
             time.push(datas[i].times)
         }
-        console.log(time)
       // 过滤操作，挑出日期在data中的小方格（因为周六、周日没有在data中，周六周日小方格填充色为默认白色）
       rect.filter(function(d) {
               return isInArray(time, d);
@@ -85,15 +83,26 @@ function draw_calendar_chart(width, height, cellSize, item_id, year, containerId
               return color(getRatingByDate(datas, d));
           })
           .on("mouseover",function(d) {
-              tooltip.html("名称：<br/>"
-									+"描述：<br/>")
+              item = getInfoByTime(datas, d)
+              console.log(item)
+              tooltip.html("<div class='comment-container'>"+
+        "<div class='comment-img pull-left'><img src='"+item.user_pic+"' class='header' onerror=\""+"this.src='../img/default.png'"+"\"/></div>"+
+            "<div class='comment-view pull-left'>"+
+                "<span class='name'>匿名用户</span>"+
+                "<span class='name'>&nbsp;&nbsp;|&nbsp;&nbsp;</span>"+
+                "<img src='../img/level.png' style='width: 20px; height: 20px;display: inline;padding: 0, margin: 0' />"+
+                "<font color='yellow'>"+item.user_rank+"</font>"+
+                "<div class='desc'>"+item.review+"</div>"+
+                "<div class='date' style='padding-top: 3px'>"+item.times+"</div>"+
+            "</div>"+
+        "</div>")
 								.style("left", (d3.event.pageX)+"px")
-								.style("top", (d3.event.pageY+20)+"px")
+								.style("top", (d3.event.pageY-100)+"px")
 								.style("opacity", 1.0);
           })
           .on("mousemove", function(d) {
 						tooltip.style("left", (d3.event.pageX))
-								.style("top", (d3.event.pageY+20));
+								.style("top", (d3.event.pageY-100));
 					})
           .on("mouseout", function(d, i) {
 							tooltip.style("opacity", 0.0);

@@ -2,7 +2,7 @@
     position: absolute;
     width: auto;
     height: auto;
-    max-width: 300px;
+    max-width: 500px;
     color: rgb(255, 255, 255);
     font: 14px/21px "Microsoft YaHei";
     text-align: left;
@@ -15,4 +15,56 @@
     border-style: solid;
     z-index: 9999999;
     pointer-events: none;
+}
+
+.comment-container {
+    width: 400px;
+    height: 100px;
+    margin: 5px;
+}
+
+.comment-img {
+    padding-top: 20px;
+}
+
+.comment-view {
+    margin: 0 20px;
+    padding-bottom: 3px;
+    padding-top: 3px
+}
+
+.header {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+.pull-left {
+    float: left;
+    display: inline;
+}
+
+.name {
+    font-size: 13px;
+    color: #c2d9d4;
+    line-height: 22px;
+    margin-bottom: 1px;
+}
+
+.date {
+    font-size: 8px;
+    line-height: 20px;
+    color: #999;
+}
+
+.desc {
+    font-size: 14px;
+    line-height: 20px;
+    padding-top: 13px;
+    width: 300px
 }

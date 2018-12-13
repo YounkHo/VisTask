@@ -56,3 +56,12 @@ function isInArray(arr,value){
     }
     return false;
 }
+
+function getInfoByTime(items, time) {
+    for(var i=0;i<items.length;i++){
+        if(items[i].times == time)
+            return items[i]
+    }
+    return null
+}
+

@@ -26,12 +26,13 @@ function drawMap(viewId, type) {
 
         }
         var options = {
-            size: BMAP_POINT_SIZE_SMALL,
-            shape: BMAP_POINT_SHAPE_STAR,
+            size: BMAP_POINT_SIZE_HUGE,
+            shape: BMAP_POINT_SHAPE_WATERDROP,
             color: '#d340c3'
         }
 		var pointCollection = new BMap.PointCollection(points, options);  // 初始化PointCollection
 		pointCollection.addEventListener('click', function (e) {
+		    console.log(e)
           alert('单击点的坐标为：' + e.point.lng + ',' + e.point.lat);  // 监听点击事件
         });
          map.addOverlay(pointCollection);  // 添加Overlay
