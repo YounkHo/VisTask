@@ -1,4 +1,5 @@
 draw_calendar_chart(600,90,10,"18022345", 2015,"temporal-chart")
+drawRadar("radar", "18022345")
 drawMap("map-chart", "咖啡厅 ")
 drawCloud("cloud","18022345")
 function drawMap(viewId, type) {
@@ -15,7 +16,9 @@ function drawMap(viewId, type) {
 	map.setCurrentCity("绵阳");          // 设置地图显示的城市 此项是必须设置的
 	map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
     var points = [];  // 添加海量点数据
-    d3.csv("../data/item2.csv").then(function (res) {
+    d3.csv("../data/item2.csv", function (err, res) {
+        if (err)
+            return
         datas = []
         for(var i=0;i<res.length;i++){
             if(res[i].item_type == type){
@@ -40,6 +43,7 @@ function drawMap(viewId, type) {
 		        item = getInfoByPosition(point.point.lat, point.point.lng, datas)
                 draw_calendar_chart(600,90,10,item.item_id, 2015,"temporal-chart")
                 drawCloud("cloud",item.item_id)
+                drawRadar("radar", item.item_id)
                 console.log(item.item_id)
             }
         });

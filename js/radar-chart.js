@@ -11,7 +11,7 @@ var RadarChart = {
     maxValue: 10,			// 最大值
     minValue: 0,
     radians: 2 * Math.PI,
-    color: d3.scaleOrdinal(d3.schemeCategory10),
+    color: d3.scale.category10(),
     axisLine: true,
     axisText: true,
     circles: true,
@@ -235,16 +235,15 @@ var RadarChart = {
             axis.y = (cfg.h/2-radius2)+getVerticalPosition(i, radius2, (parseFloat(Math.max(axis.value - cfg.minValue, 0))/maxValue)*cfg.factor);
           });
         });
-        var polygon = container.selectAll(".area").data(data, cfg.axisJoin);    
+        var polygon = container.selectAll(".area").data(data, cfg.axisJoin);
+
         var polygonType = 'polygon';
         if (cfg.open) {
           polygonType = 'polyline';
         }
 
         polygon.enter().append(polygonType)
-//      .classed({area: 1, 'd3-enter': 1})
-        		.classed('area', 1)
-        		.classed('d3-enter', 1)
+        .classed({area: 1, 'd3-enter': 1})
         .on('mouseover', function (dd){
           d3.event.stopPropagation();
           container.classed('focus', 1);
@@ -263,11 +262,7 @@ var RadarChart = {
         .transition().duration(cfg.transitionDuration)
         .remove();
 
-
         polygon
-//      .classed('d3-exit',0)
-//      .classed('radar-chart-serie1',1)
-//      .classed(function(d){return d.className},1)
         .each(function(d, i) {
           var classed = {'d3-exit': 0}; // if exiting element is being reused
           classed['radar-chart-serie' + i] = 1;
@@ -280,6 +275,7 @@ var RadarChart = {
 //      .style('stroke', function(d, i) { return cfg.color(i); })
 				.style('stroke', "#000080")
 //      .style('fill', function(d, i) { return cfg.color(i); })
+//      .style('fill',"#0ff")
         .style('fill', "none")
         
         //透明度
@@ -294,8 +290,7 @@ var RadarChart = {
         .each('start', function() {
           d3.select(this).classed('d3-enter', 0); // trigger css transition
         });
-				
-				
+
         if(cfg.circles && cfg.radius) {
 
           var circleGroups = container.selectAll('g.circle-group').data(data, cfg.axisJoin);
@@ -323,9 +318,7 @@ var RadarChart = {
           });
 
           circle.enter().append('circle')
-//        .classed({circle: 1, 'd3-enter': 1})
-          .classed('circle', 1)
-          .classed('d3-enter', 1)
+          .classed({circle: 1, 'd3-enter': 1})
           .on('mouseover', function(dd){
             d3.event.stopPropagation();
             setTooltip(tooltip, cfg.tooltipFormatValue(dd[0].value));
@@ -372,14 +365,11 @@ var RadarChart = {
 
           //Make sure layer order is correct
           var poly_node = polygon.node();
-          console.log(polygon._groups)
-          console.log(polygon._parents)
-          console.log(polygon._enter)
           console.log(polygon,poly_node)
           poly_node.parentNode.appendChild(poly_node);
 
           var cg_node = circleGroups.node();
-          cg_node._parents.appendChild(cg_node);
+          cg_node.parentNode.appendChild(cg_node);
 
           // ensure tooltip is upmost layer
           var tooltipEl = tooltip.node();

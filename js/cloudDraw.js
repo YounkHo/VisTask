@@ -1,10 +1,8 @@
-
 function drawCloud(view,itemId){
 	d3.select("#" + view).selectAll('*').remove();
-//	d3.csv("./data/useritem.csv", function(error, dataset){
-	d3.csv("../data/useritem.csv").then(function(dataset){
-
-		item_ids = []
+	d3.csv("../data/useritem.csv", function(error, dataset){
+	if(error)return;
+	item_ids = []
 		for (var i = 0; i <dataset.length; i++) {
 			item_ids.push(dataset[i].item_id)
 		}
@@ -20,7 +18,7 @@ function drawCloud(view,itemId){
 	review = review.split("，");
 //	console.log(review);
 	
-	var fill = d3.scaleOrdinal(d3.schemeCategory10);
+	var fill = d3.scale.category20();
 //	console.log(dataset[0]['cloud']);
 	
     d3.layout.cloud().size([600, 160]) //size([x,y])  词云显示的大小

@@ -5,7 +5,7 @@ function draw_calendar_chart(width, height, cellSize, item_id, year, containerId
         .attr("class", "tooltips")
         .attr("opacity", 0.0);
     // 定义颜色函数，使用量化比例尺映射，即定义域为连续的，从-0.05到0.05，而值域是离散的颜色值
-    var color = d3.scaleQuantize()
+    var color = d3.scale.quantize()
         .domain([0, 100])
         .range(["#a6cee3","#1f78b4","#b2df8a","#33a02c","#fb9a99","#e31a1c","#fdbf6f","#ff7f00","#cab2d6","#6a3d9a"]);
 
@@ -34,27 +34,30 @@ function draw_calendar_chart(width, height, cellSize, item_id, year, containerId
         .attr("stroke", "#ccc")
       .selectAll("rect")
       //计算一组小方格的数量，调用d3的timeDays方法，获取两个时间之间的天数，例如，计算从1999年的第一天到2000年的第一天,则参数为new Date(1999,0,1)到 new Date(2000,0,1)，timeDays返回天序列
-      .data(function(d) { return d3.timeDays(new Date(d, 0, 1), new Date(d + 1, 0, 1)); })
+      .data(function(d) { return d3.time.days(new Date(d, 0, 1), new Date(d + 1, 0, 1)); })
       .enter().append("rect")
         .attr("width", cellSize)
         .attr("height", cellSize)
         // 返回一年有多少个周，确定一组小方格的横向位置
-        .attr("x", function(d) { return d3.timeWeek.count(d3.timeYear(d), d) * cellSize; })
+        .attr("x", function(d) {
+            return d3.time.weekOfYear(d) * cellSize; })
         // 返回天，确定一组小方格的纵向位置
         .attr("y", function(d) { return d.getDay() * cellSize; })
         // 定义当前小方格上对应的日期的格式
-        .datum(d3.timeFormat("%Y-%m-%d"));
+        .datum(d3.time.format("%Y-%m-%d"));
 
     // 勾勒月份的分割线
     svg.append("g")
         .attr("fill", "none")
         .attr("stroke", "#000")
       .selectAll("path")
-      .data(function(d) { return d3.timeMonths(new Date(d, 0, 1), new Date(d + 1, 0, 1)); })
+      .data(function(d) { return d3.time.months(new Date(d, 0, 1), new Date(d + 1, 0, 1)); })
       .enter().append("path")
         .attr("d", pathMonth);
 
-    d3.csv("../data/hty/useritem.csv").then(function(csv) {
+    d3.csv("../data/hty/useritem.csv", function(err, csv) {
+        if (err)
+            return
         var datas= []
       // 这里的d3.nest可以参考http://blog.csdn.net/gdp12315_gu/article/details/51721988
       d3.nest()
@@ -67,7 +70,7 @@ function draw_calendar_chart(width, height, cellSize, item_id, year, containerId
               }
           })
         // 个人理解，这里的.object()函数类似于call()函数，用来将定义的分组机制应用到csv数据上,返回分组后的对象，官网对nest().object()的解释：Applies the nest operator to the specified array, returning a nested object.有没有醍醐灌顶的感觉，哈哈
-        .object(csv);
+        .entries(csv);
         time=[]
         for(var i=0;i<datas.length;i++){
             time.push(datas[i].times)
@@ -109,8 +112,8 @@ function draw_calendar_chart(width, height, cellSize, item_id, year, containerId
   // 定义月份分割线路径
 function pathMonth(t0) {
   var t1 = new Date(t0.getFullYear(), t0.getMonth() + 1, 0),
-      d0 = t0.getDay(), w0 = d3.timeWeek.count(d3.timeYear(t0), t0),
-      d1 = t1.getDay(), w1 = d3.timeWeek.count(d3.timeYear(t1), t1);
+      d0 = t0.getDay(), w0 = d3.time.weekOfYear(t0),
+      d1 = t1.getDay(), w1 = d3.time.weekOfYear(t1);
   return "M" + (w0 + 1) * cellSize + "," + d0 * cellSize
       + "H" + w0 * cellSize + "V" + 7 * cellSize
       + "H" + w1 * cellSize + "V" + (d1 + 1) * cellSize
