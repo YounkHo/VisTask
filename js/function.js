@@ -120,3 +120,31 @@ function getDataByType(res, type) {
     }
     return datas
 }
+
+function unique(array) {
+    var res = [];
+    for (var i = 0, len = array.length; i < len; i++) {
+        var current = array[i];
+        if (res.indexOf(current) === -1) {
+            res.push(current)
+        }
+    }
+    return res;
+}
+
+function getTypes(res) {
+    var types = []
+    for (var i = 0; i < res.length; i++) {
+        types.push(res[i].item_type)
+    }
+    return unique(types)
+}
+
+function getYear(res) {
+    var years = []
+    for (var i = 0; i < res.length; i++) {
+
+        years.push(res[i].times.slice(0, 4))
+    }
+    return unique(years)
+}

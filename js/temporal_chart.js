@@ -1,5 +1,6 @@
 function draw_calendar_chart(width, height, cellSize, item_id, year, containerId) {
     d3.select("#" + containerId).selectAll('*').remove();
+
     var tooltip = d3.select("body")
         .append("div")
         .attr("class", "tooltips")
@@ -34,7 +35,10 @@ function draw_calendar_chart(width, height, cellSize, item_id, year, containerId
         .attr("stroke", "#ccc")
       .selectAll("rect")
       //计算一组小方格的数量，调用d3的timeDays方法，获取两个时间之间的天数，例如，计算从1999年的第一天到2000年的第一天,则参数为new Date(1999,0,1)到 new Date(2000,0,1)，timeDays返回天序列
-      .data(function(d) { return d3.time.days(new Date(d, 0, 1), new Date(d + 1, 0, 1)); })
+      .data(function(d) {
+          console.log(d)
+          return d3.time.days(new Date(d, 0, 1), new Date(d + 1, 0, 1));
+      })
       .enter().append("rect")
         .attr("width", cellSize)
         .attr("height", cellSize)
@@ -59,25 +63,34 @@ function draw_calendar_chart(width, height, cellSize, item_id, year, containerId
         if (err)
             return
         var datas= []
-      // 这里的d3.nest可以参考http://blog.csdn.net/gdp12315_gu/article/details/51721988
-      d3.nest()
+        for (var i = 0; i < csv.length; i++) {
+            if(csv[i].item_id == item_id){
+                  datas.push(csv[i])
+              }
+        }
+        console.log(item_id, datas)
+      /*d3.nest()
           // 以d.Date来对数据进行分组
-          .key(function(d) { return d.item_id; })
+          .key(function(d) {
+              return d.item_id;
+          })
           // rollup函数用来获取每个组的values，因为一组为一天，只有一行数据，因此这里定义每个组的values 用d[0],即d[0].Close - d[0].Open) / d[0].Open来计算产生数值values
           .rollup(function(d) {
+              console.log(d)
               if(d[0].item_id == item_id){
                   datas = d
               }
           })
         // 个人理解，这里的.object()函数类似于call()函数，用来将定义的分组机制应用到csv数据上,返回分组后的对象，官网对nest().object()的解释：Applies the nest operator to the specified array, returning a nested object.有没有醍醐灌顶的感觉，哈哈
-        .entries(csv);
+        .entries(csv);*/
         time=[]
         for(var i=0;i<datas.length;i++){
             time.push(datas[i].times)
         }
-        console.log(datas)
+        console.log(datas, time)
       // 过滤操作，挑出日期在data中的小方格（因为周六、周日没有在data中，周六周日小方格填充色为默认白色）
       rect.filter(function(d) {
+
               return isInArray(time, d);
           })
           // 定义小方格的填充色，通过每个小方格中的values值来映射颜色函数
