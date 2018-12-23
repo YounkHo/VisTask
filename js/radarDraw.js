@@ -9,7 +9,7 @@ function drawRadar(viewId, item_id){
 	    		.attr('height', cfg.h + cfg.h / 4);
 	var data = [];
 	
-	d3.csv("../data/item.csv", function(error, dataset){
+	d3.csv("../data/item2.csv", function(error, dataset){
 		if(error)return;
 		for (var i = 0; i <dataset.length; i++) {
 			if (dataset[i].item_id == item_id) {
@@ -38,12 +38,9 @@ function drawRadar(viewId, item_id){
 		}
 		
 		data = [data[id]];
-		console.log(data);
-		
+
 		function ItemDataset() {
-			console.log(data);
 		  return data.map(function(d) {
-		  	console.log(d)
 		    return {
 		      Name: d.Name,
 		      axes: d.axes.map(function(axis) {

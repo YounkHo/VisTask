@@ -1,17 +1,22 @@
-draw_calendar_chart(600,90,10,"18022345", 2015,"temporal-chart")
+draw_calendar_chart(document.getElementById("tempral-parent").offsetWidth,document.getElementById("tempral-parent").offsetHeight,document.getElementById("tempral-parent").offsetWidth/60,"18022345", 2015,"temporal-chart")
 drawRadar("radar", "18022345")
-drawMap("map-chart", "咖啡厅 ")
+drawMap("map-chart", global_type)
 drawCloud("cloud","18022345")
+
 var select = document.getElementById("year")
 var option = document.createElement("option")
 option.innerHTML = 2015
 select.append(option)
+var myDrag;
 function drawMap(viewId, type) {
     // 百度地图API功能
     var myGeo = new BMap.Geocoder();
-	var map = new BMap.Map(viewId,{minZoom:10,maxZoom:18});     // 创建Map实例
+	map = new BMap.Map(viewId,{minZoom:10,maxZoom:18});     // 创建Map实例
 	map.centerAndZoom("绵阳", 14);  // 初始化地图,设置中心点坐标和地图级别
 	//添加地图类型控件
+    myDrag = new BMapLib.RectangleZoom(map, {
+		followText: "拖拽鼠标进行操作"
+	});
 	map.addControl(new BMap.MapTypeControl({
 		mapTypes:[
             BMAP_NORMAL_MAP,
@@ -21,9 +26,15 @@ function drawMap(viewId, type) {
 	map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
     var points = [];  // 添加海量点数据
     d3.csv("../data/item2.csv", function (err, res) {
+        getBestTen(10, 10, 10, 10, "咖啡厅 ", res, map)
+        var typedata = getTypes(res)
+        resData = res
         if (err)
             return
         datas = []
+        var typecolor = d3.scale.quantize()
+            .domain([0, typedata.length])
+            .range(["#8dd3c7","#ffffb3","#bebada","#fb8072","#80b1d3","#fdb462","#b3de69","#fccde5","#d9d9d9","#bc80bd","#ccebc5","#ffed6f"]);
         for(var i=0;i<res.length;i++){
             if(res[i].item_type == type){
                 datas.push(res[i])
@@ -39,20 +50,24 @@ function drawMap(viewId, type) {
         var options = {
             size: BMAP_POINT_SIZE_HUGE,
             shape: BMAP_POINT_SHAPE_WATERDROP,
-            color: '#d340c3'
+            color: typecolor(typedata.indexOf(getItemById(document.getElementById("item_id").value,res).item_type))
         }
 		var pointCollection = new BMap.PointCollection(points, options);  // 初始化PointCollection
 		pointCollection.addEventListener('click', function (res, point) {
+
 		    if (point){
+
 		        item = getInfoByPosition(point.point.lat, point.point.lng, datas)
                 document.getElementById("item_id").value = item.item_id
+                document.getElementById("title").style.color = typecolor(typedata.indexOf(item.item_type))
                 document.getElementById("title").innerHTML = item.name
-                draw_calendar_chart(600,90,10,item.item_id, parseInt($("#year").children('option:selected').val()),"temporal-chart")
+                draw_calendar_chart(document.getElementById("tempral-parent").offsetWidth,document.getElementById("tempral-parent").offsetHeight,document.getElementById("tempral-parent").offsetWidth/60,item.item_id, parseInt($("#year").children('option:selected').val()),"temporal-chart")
                 drawCloud("cloud",item.item_id)
                 drawRadar("radar", item.item_id)
                 d3.csv("../data/hty/useritem.csv", function(err, csv) {
                     if (err)
                         return
+
                     var datas= []
                   d3.nest()
                       // 以d.Date来对数据进行分组
@@ -67,7 +82,6 @@ function drawMap(viewId, type) {
                     .entries(csv);
                     d3.select("#year").selectAll('*').remove();
                      var year = getYear(datas)
-                    console.log(datas)
                     for (var i = 0; i < year.length; i++) {
                         var select = document.getElementById("year")
                         var option = document.createElement("option")

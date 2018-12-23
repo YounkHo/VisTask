@@ -38,6 +38,8 @@ function fullscreen() {
 $(document).ready(function() {
     // body...
     $('[data-toggle="fullscreentips"]').tooltip();
+    $('[data-toggle="choose_map"]').tooltip();
+    $('[data-toggle="cancelchoose_map"]').tooltip();
 });
 
 function getRatingByDate(res,dates) {
@@ -48,6 +50,7 @@ function getRatingByDate(res,dates) {
     }
     return 0
 }
+
 function isInArray(arr,value){
     for(var i = 0; i < arr.length; i++){
         if(value === arr[i]){
@@ -135,6 +138,8 @@ function unique(array) {
 function getTypes(res) {
     var types = []
     for (var i = 0; i < res.length; i++) {
+        if (res[i].item_type == "3 条点评")
+            console.log(res[i].item_id)
         types.push(res[i].item_type)
     }
     return unique(types)
@@ -147,4 +152,43 @@ function getYear(res) {
         years.push(res[i].times.slice(0, 4))
     }
     return unique(years)
+}
+
+function getItemById(itemid, res) {
+    for (var i = 0; i < res.length; i++) {
+        if (res[i].item_id == itemid)
+            return res[i]
+    }
+    return null
+}
+
+function getBestTen(cost, taste, environment, service, type, res, map) {
+    var datas = []
+    var rank = document.getElementById("rank").value
+    var sum = cost+taste+environment+service
+    for (var i = 0; i < res.length; i++) {
+        if (res[i].item_type == type){
+
+            res[i]['score'] = res[i].cost*(cost/sum)+res[i].taste*(taste/sum)+res[i].environment*(environment/sum)+res[i].service*(service/sum)
+            datas.push(res[i])
+        }
+    }
+    datas.sort(function (a, b) {
+        return a.score - b.score
+    })
+    points = []
+    for (var i = 0; i < rank; i++) {
+        points.push(new BMap.Point(datas[i].lng, datas[i].lat))
+    }
+    for (var i = 0; i < points.length-1; i++) {
+        var walking = new BMap.WalkingRoute(map, {
+            renderOptions: {
+                map: map,
+                autoViewport: true
+            }
+        });
+        walking.search(points[i], points[i+1]);
+    }
+    map.centerAndZoom("绵阳", 14);  // 初始化地图,设置中心点坐标和地图级别
+    return points
 }

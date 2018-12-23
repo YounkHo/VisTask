@@ -7,7 +7,6 @@ function drawCloud(view,itemId){
 			item_ids.push(dataset[i].item_id)
 		}
 		var viewid= item_ids.indexOf(itemId)
-		console.log(viewid)
 
 		try {
 			review = dataset[viewid]["cloud"]

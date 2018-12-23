@@ -71,8 +71,6 @@ var RadarChart = {
         tt.append('rect').classed("tooltip", true);
         tt.append('text').classed("tooltip", true);
 
-        // allow simple notation
-//      console.log(data);
         data = data.map(function(datum) {
           if(datum instanceof Array) {
             datum = {axes: datum};
@@ -365,7 +363,6 @@ var RadarChart = {
 
           //Make sure layer order is correct
           var poly_node = polygon.node();
-          console.log(polygon,poly_node)
           poly_node.parentNode.appendChild(poly_node);
 
           var cg_node = circleGroups.node();
