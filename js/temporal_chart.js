@@ -1,6 +1,5 @@
-draw_calendar_chart(600,90,10,"21015857", 2015,"temporal-chart")
-
 function draw_calendar_chart(width, height, cellSize, item_id, year, containerId) {
+    d3.select("#" + containerId).selectAll('*').remove();
     var tooltip = d3.select("body")
         .append("div")
         .attr("class", "tooltips")
@@ -55,7 +54,7 @@ function draw_calendar_chart(width, height, cellSize, item_id, year, containerId
       .enter().append("path")
         .attr("d", pathMonth);
 
-    d3.csv("../data/useritem.csv").then(function(csv) {
+    d3.csv("../data/hty/useritem.csv").then(function(csv) {
         var datas= []
       // 这里的d3.nest可以参考http://blog.csdn.net/gdp12315_gu/article/details/51721988
       d3.nest()
@@ -73,18 +72,17 @@ function draw_calendar_chart(width, height, cellSize, item_id, year, containerId
         for(var i=0;i<datas.length;i++){
             time.push(datas[i].times)
         }
+        console.log(datas)
       // 过滤操作，挑出日期在data中的小方格（因为周六、周日没有在data中，周六周日小方格填充色为默认白色）
       rect.filter(function(d) {
               return isInArray(time, d);
           })
           // 定义小方格的填充色，通过每个小方格中的values值来映射颜色函数
           .attr("fill", function(d) {
-              console.log(getRatingByDate(datas, d))
               return color(getRatingByDate(datas, d));
           })
           .on("mouseover",function(d) {
               item = getInfoByTime(datas, d)
-              console.log(item)
               tooltip.html("<div class='comment-container'>"+
         "<div class='comment-img pull-left'><img src='"+item.user_pic+"' class='header' onerror=\""+"this.src='../img/default.png'"+"\"/></div>"+
             "<div class='comment-view pull-left'>"+
@@ -108,7 +106,7 @@ function draw_calendar_chart(width, height, cellSize, item_id, year, containerId
 							tooltip.style("opacity", 0.0);
 					});
     });
-    // 定义月份分割线路径
+  // 定义月份分割线路径
 function pathMonth(t0) {
   var t1 = new Date(t0.getFullYear(), t0.getMonth() + 1, 0),
       d0 = t0.getDay(), w0 = d3.timeWeek.count(d3.timeYear(t0), t0),
