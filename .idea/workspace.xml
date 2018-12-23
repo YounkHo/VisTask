@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3f759fe2-141c-4633-8833-909c0d9e7ac4" name="Default Changelist" comment="" />
+    <list default="true" id="3f759fe2-141c-4633-8833-909c0d9e7ac4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/img/S1.cur" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/S2.cur" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/fullscreen-exit.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/fullscreen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/popper.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/map_chart.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/map_chart.js" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -13,48 +24,51 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/html/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="614">
-              <caret line="124" column="51" selection-start-line="124" selection-start-column="42" selection-end-line="124" selection-end-column="51" />
+            <state relative-caret-position="245">
+              <caret line="13" column="34" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
               <folding>
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#select#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#select#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/css/radar-chart.css">
+        <entry file="file://$PROJECT_DIR$/js/popper.min.js">
           <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/css/main.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="978">
-              <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
-            </state>
-          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/vistaskmap.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="140">
-              <caret line="14" column="43" lean-forward="true" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
+              <caret line="14" column="43" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/css/main.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="663">
+              <caret line="87" selection-start-line="87" selection-end-line="87" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/map_chart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
+            <state relative-caret-position="735">
+              <caret line="48" column="58" selection-start-line="48" selection-start-column="58" selection-end-line="48" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -62,7 +76,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/radar-chart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="827">
+            <state relative-caret-position="803">
               <caret line="243" selection-start-line="243" selection-end-line="243" />
             </state>
           </provider>
@@ -71,16 +85,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/temporal_chart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-420">
+            <state relative-caret-position="35">
               <caret line="66" column="40" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="40" />
-              <folding>
-                <element signature="e#227#233#0" expanded="true" />
-                <element signature="e#233#239#0" expanded="true" />
-                <element signature="e#240#246#0" expanded="true" />
-                <element signature="e#246#252#0" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -97,17 +103,9 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/function.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="558">
+            <state relative-caret-position="4047">
               <caret line="146" column="31" selection-start-line="146" selection-start-column="26" selection-end-line="146" selection-end-column="31" />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/item.csv">
-          <provider selected="true" editor-type-id="csv-text-editor" />
-          <provider editor-type-id="csv-table-editor">
-            <state showInfoPanel="true" rowLines="3" />
           </provider>
         </entry>
       </file>
@@ -149,12 +147,12 @@
         <option value="$PROJECT_DIR$/js/radar-chart.js" />
         <option value="$PROJECT_DIR$/js/cloudDraw.js" />
         <option value="$PROJECT_DIR$/js/radarDraw.js" />
-        <option value="$PROJECT_DIR$/css/main.css" />
-        <option value="$PROJECT_DIR$/html/main.html" />
         <option value="$PROJECT_DIR$/js/function.js" />
         <option value="$PROJECT_DIR$/js/temporal_chart.js" />
         <option value="$PROJECT_DIR$/js/run.js" />
         <option value="$PROJECT_DIR$/js/map_chart.js" />
+        <option value="$PROJECT_DIR$/css/main.css" />
+        <option value="$PROJECT_DIR$/html/main.html" />
       </list>
     </option>
   </component>
@@ -185,12 +183,12 @@
             <path>
               <item name="VisTask-master" type="b2602c69:ProjectViewProjectNode" />
               <item name="VisTask-master" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="html" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="VisTask-master" type="b2602c69:ProjectViewProjectNode" />
               <item name="VisTask-master" type="462c0819:PsiDirectoryNode" />
-              <item name="html" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="VisTask-master" type="b2602c69:ProjectViewProjectNode" />
@@ -214,17 +212,17 @@
     <property name="settings.editor.selected.configurable" value="project.propDebugger" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Dream\Desktop\VisTask-master\js" />
-      <recent name="C:\Users\Dream\Desktop\VisTask-master\css" />
-      <recent name="C:\Users\Dream\Desktop\VisTask-master\data" />
-      <recent name="E:\HTML\VisTask\js" />
-      <recent name="E:\HTML\VisTask\data" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\HTML\VisTask\js" />
       <recent name="E:\HTML\VisTask\data" />
       <recent name="E:\HTML\VisTask\css" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Dream\Desktop\VisTask-master\js" />
+      <recent name="C:\Users\Dream\Desktop\VisTask-master\img" />
+      <recent name="C:\Users\Dream\Desktop\VisTask-master\css" />
+      <recent name="C:\Users\Dream\Desktop\VisTask-master\data" />
+      <recent name="E:\HTML\VisTask\js" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -262,6 +260,7 @@
       <workItem from="1545406295606" duration="2404000" />
       <workItem from="1545482896269" duration="19507000" />
       <workItem from="1545548168407" duration="6316000" />
+      <workItem from="1545554958515" duration="3544000" />
     </task>
     <task id="LOCAL-00001" summary="完善时间图模块">
       <created>1544687529078</created>
@@ -277,11 +276,18 @@
       <option name="project" value="LOCAL" />
       <updated>1545537341764</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="最后优化">
+      <created>1545555045368</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1545555045368</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71234000" />
+    <option name="totallyTimeSpent" value="74778000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
@@ -310,14 +316,13 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <MESSAGE value="完善时间图模块" />
     <MESSAGE value="几经波折后的合并" />
-    <option name="LAST_COMMIT_MESSAGE" value="几经波折后的合并" />
+    <MESSAGE value="最后优化" />
+    <option name="LAST_COMMIT_MESSAGE" value="最后优化" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/popper.min.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/d3.js" />
     <entry file="file://$PROJECT_DIR$/js/colorbrewer.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -347,9 +352,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/mapdraw.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/js/mapdraw.js" />
     <entry file="file://$PROJECT_DIR$/html/test.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="754">
@@ -390,56 +393,20 @@
     <entry file="file://$PROJECT_DIR$/js/d3.layout.cloud.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/item.csv">
-      <provider selected="true" editor-type-id="csv-text-editor" />
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" rowLines="3" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/bootstrap.min.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="978">
-          <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
+    <entry file="file://$PROJECT_DIR$/css/radar-chart.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/item.csv">
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state>
+          <caret column="12" selection-start-column="8" selection-end-column="12" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/radar-chart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="827">
-          <caret line="243" selection-start-line="243" selection-end-line="243" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/vistaskmap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="14" column="43" lean-forward="true" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/function.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="146" column="31" selection-start-line="146" selection-start-column="26" selection-end-line="146" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/temporal_chart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-420">
-          <caret line="66" column="40" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="40" />
-          <folding>
-            <element signature="e#227#233#0" expanded="true" />
-            <element signature="e#233#239#0" expanded="true" />
-            <element signature="e#240#246#0" expanded="true" />
-            <element signature="e#246#252#0" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" rowLines="3" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/run.js">
@@ -449,25 +416,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/radar-chart.css">
+    <entry file="file://$PROJECT_DIR$/js/map_chart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="735">
+          <caret line="48" column="58" selection-start-line="48" selection-start-column="58" selection-end-line="48" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/vistaskmap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="14" column="43" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/radar-chart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="803">
+          <caret line="243" selection-start-line="243" selection-end-line="243" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/temporal_chart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="35">
+          <caret line="66" column="40" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="87" selection-start-line="87" selection-end-line="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/function.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4047">
+          <caret line="146" column="31" selection-start-line="146" selection-start-column="26" selection-end-line="146" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/popper.min.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/html/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="614">
-          <caret line="124" column="51" selection-start-line="124" selection-start-column="42" selection-end-line="124" selection-end-column="51" />
+        <state relative-caret-position="245">
+          <caret line="13" column="34" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
           <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#select#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#select#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/map_chart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
         </state>
       </provider>
     </entry>

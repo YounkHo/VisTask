@@ -46,6 +46,7 @@ function drawMap(viewId, type) {
 		    if (point){
 		        item = getInfoByPosition(point.point.lat, point.point.lng, datas)
                 document.getElementById("item_id").value = item.item_id
+                document.getElementById("title").innerHTML = item.name
                 draw_calendar_chart(600,90,10,item.item_id, parseInt($("#year").children('option:selected').val()),"temporal-chart")
                 drawCloud("cloud",item.item_id)
                 drawRadar("radar", item.item_id)
