@@ -1,169 +1,206 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>layout 后台大布局 - Layui</title>
-  <link rel="stylesheet" type="text/css" href="../css/main.css">
-  <link rel="stylesheet" type="text/css" href="../css/radar-chart.css">
-  <link rel="stylesheet" type="text/css" href="../layui/css/layui.css">
-  <link rel="stylesheet" type="text/css" href="../css/bootstrap-datetimepicker.css">
-  <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
-  <script src="../js/jquery-3.3.1.min.js" type="text/javascript"></script>
-  <script src="../js/popper.min.js" type="text/javascript"></script>
-  <script src="../js/d3.v3.js" type="text/javascript"></script>
-  <script src="../js/function.js" type="text/javascript"></script>
-  <script src="../js/bootstrap.min.js" type="text/javascript"></script>
-  <script src="../js/bootstrap-datetimepicker.js" type="text/javascript"></script>
-  <script src="../js/colorbrewer.js" type="text/javascript" ></script>
-  <script src="../layui/layui.js" type="text/javascript"></script>
-	<style type="text/css">
-		body, html{width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
-		#map{left: 35%;height:800px;width:500px;position: absolute;}
-		#r-result{left: 40%;top: 95%;height:20%;width:20%; font-size:14px;position: absolute;}
-		.radar-chart .area {fill-opacity: 0.7;}
-	    .radar-chart.focus .area {fill-opacity: 0.3;}
-	    .radar-chart.focus .area.focused {fill-opacity: 0.9;}
-	    .area.germany, .germany .circle {fill: #FFD700;stroke: none;}
-	    .area.argentina, .argentina .circle {fill: #ADD8E6;stroke: none;}
-	</style>
-	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=qMUSRkXavkGBE9bllLVCP24j24RDgT6r"></script>
-<script type="text/javascript" src="http://api.map.baidu.com/library/RectangleZoom/1.2/src/RectangleZoom_min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>评论数据可视化</title>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/radar-chart.css">
+    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+    <script src="../js/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="../js/popper.min.js" type="text/javascript"></script>
+    <script src="../js/d3.v3.js" type="text/javascript"></script>
+    <script src="../js/function.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../js/bootstrap-datetimepicker.js" type="text/javascript"></script>
+    <script src="../js/colorbrewer.js" type="text/javascript"></script>
+    <script src="../layui/layui.js" type="text/javascript"></script>
+    <style type="text/css">
+    body,
+    html {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        font-family: "微软雅黑";
+    }
+
+    #map {
+        left: 35%;
+        height: 800px;
+        width: 500px;
+        position: absolute;
+    }
+
+    #r-result {
+        left: 40%;
+        top: 95%;
+        height: 20%;
+        width: 20%;
+        font-size: 14px;
+        position: absolute;
+    }
+
+    .radar-chart .area {
+        fill-opacity: 0.7;
+    }
+
+    .radar-chart.focus .area {
+        fill-opacity: 0.3;
+    }
+
+    .radar-chart.focus .area.focused {
+        fill-opacity: 0.9;
+    }
+
+    .area.germany,
+    .germany .circle {
+        fill: #FFD700;
+        stroke: none;
+    }
+
+    .area.argentina,
+    .argentina .circle {
+        fill: #ADD8E6;
+        stroke: none;
+    }
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=qMUSRkXavkGBE9bllLVCP24j24RDgT6r"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/RectangleZoom/1.2/src/RectangleZoom_min.js"></script>
 </head>
+
 <body class="layui-layout-body">
-<input type="hidden" value="18022345" id="item_id">
-<div class="layui-layout layui-layout-admin">
-  <div class="layui-header layui-row">
-    <div class="layui-logo layui-col-md5">课题小组二</div>
-    <div class="layui-col-md5 layui-col-md-offset5" id="name" style="color: white;font-size: 40px;">
-               评论数据可视化
-    </div>
-    <div style="text-align: center">
-      <img width="32px" height="32px" id="fullscreen" style="margin: 10px" data-toggle="fullscreentips" title="切换全屏" onclick="fullscreen()" src="../img/fullscreen.png" class="float-right img-fluid">
-    </div>
-  </div>
-
-
-<div style="padding: 20px; background-color: #F2F2F2;">
-
-    <div class="layui-col-md12">
-        <div class="layui-card">
-          <div class="layui-card-header">
-            <div class="layui-row">
-              <div class="layui-col-md4">Map Chart</div>
-
-              <div class="layui-col-md4 layui-col-md-offset1" id="title" style="color: red;font-size: 16px">
-               ice森林鲜榨果汁店
-              </div>
-              <div class="time layui-col-md1 ">
-                  <select id="type" class="selectpicker show-tick form-control" style="width:auto; height: auto" data-live-search="true">
-                  </select>
-                </div>
-              <div class="time layui-col-md1 " style="margin-left: 5px">
-                <img width="24px" height="24px" id="choose" data-toggle="choose_map" title="框选放大" src="../img/choose.png" ></div>
-                <img width="24px" height="24px" id="cancelchoose" data-toggle="cancelchoose_map" title="取消框选放大" src="../img/cancelchoose.png" ></div>
-              </div>
-              </div>
+    <input type="hidden" value="18022345" id="item_id">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header layui-row">
+            <div class="layui-logo layui-col-md5">课题小组二</div>
+            <div class="layui-col-md5 layui-col-md-offset5" id="name" style="text-shadow:6px 6px 6px #00FF00;color: white;font-family: huawenxinkai;font-size: 40px;">
+                评论数据可视化
             </div>
-          <div class="layui-card-body" style="height: 600px;padding: 3px" id="map-chart">
-          </div>
-        </div>
-      </div>
-
-  <div class="layui-row layui-col-space15" style="background-color: #F2F2F2;">
-    <div class="layui-col-md4" id="tempral-parent">
-      <div class="layui-card">
-        <div class="layui-card-header">
-            <div class="layui-row">
-              <div class="layui-col-md4">Temporal Chart</div>
-              <div class="layui-col-md1 layui-col-md-offset6">
-                  <select id="year" class="selectpicker show-tick form-control" style="width:auto; height: auto" data-live-search="true">
-                  </select>
-                </div>
-              </div>
+            <div style="text-align: center">
+                <img width="32px" height="32px" id="fullscreen" style="margin: 10px" data-toggle="fullscreentips" title="切换全屏" onclick="fullscreen()" src="../img/fullscreen.png" class="float-right img-fluid">
+    </div>
             </div>
-        <div class="layui-card-body" id="temporal-chart">
-        </div>
-      </div>
-    </div>
-    <div class="layui-col-md4">
-      <div class="layui-card">
-        <div class="layui-card-header">Radar Chart</div>
-        <div class="layui-card-body" id="radar">
-
-        </div>
-      </div>
-    </div>
-  <div class="layui-col-md4">
-        <div class="layui-card">
-          <div class="layui-card-header">Word Chart</div>
-          <div class="layui-card-body" id="cloud">
-
-          </div>
-        </div>
-      </div>
-  </div>
-</div>
-<button id="floatbtn" class="btn btn-success btn-circle btn-xl" data-placement="top" data-toggle="popover" data-trigger="hover" data-target="#myModal"></button>
-        <div class="modal fade" id="myModal">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title"><a href="http://176.122.131.25:8089/VisTaskData/Visualization/html/visualization.html"> 评论数据可视化 </a></h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <div style="padding: 20px; background-color: #F2F2F2;">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            <div class="layui-row">
+                                <div class="layui-col-md4">Map Chart</div>
+                                <div class="layui-col-md4 layui-col-md-offset1" id="title" style="text-shadow:1px 1px 1px #4e1c67;color: red;font-family:huawenxinwei; font-size: 20px">
+                                    ice森林鲜榨果汁店
+                                </div>
+                                <div class="time layui-col-md1 ">
+                                    <select id="type" class="selectpicker show-tick form-control" style="width:auto; height: auto" data-live-search="true">
+                                    </select>
+                                </div>
+                                <div class="time layui-col-md1 " style="margin-left: 5px">
+                                    <img width="24px" height="24px" id="choose" data-toggle="choose_map" title="框选放大" src="../img/choose.png" ></div>
+                                    <img width="24px" height="24px" id="cancelchoose" data-toggle="cancelchoose_map" title="取消框选放大" src="../img/cancelchoose.png" ></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-card-body" style="height: 600px;padding: 3px" id="map-chart">
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        首先灰常感谢您在漫长的加载后观看<a class=".text-center .font-italic" href="#"> 西南科技大学软件1606 🐮🍺小组 </a> 推出的的评论数据可视化作品（欢迎在Github上给我们个Star：<a class=".text-center .font-italic" href="https://github.com/Dreamcreationman/VisTask" target="_blank"> Github传送门 </a>），由于需要加载的文件较多并且包含在线js，故需要配合WS或者HBuilder等并联网观看。其中有一些重要的问题需要指出：</br></br>
-                        <code>1. 框架：</code>
-                        UI采用Layui+Boostrap4尽量构建多显示器适配，主要使用d3构建整体逻辑和动画过渡（由于时间问题没做多少），采用colorbrewer作为主要配色方案，Git做主要的代码协同。</br>
-                        <code>2. 提示：</code>
-                        <table border="1">
-                            <tr>
-                                <td>Map Chart视图</td>
-                                <td>该视图展示各个店铺的具体空间位置</td>
-                            </tr>
-                            <tr>
-                                <td>Temporal Chart视图</td>
-                                <td>该视图展示选定站点一年以来的具体评论情况</td>
-                            </tr>
-                            <tr>
-                                <td>Temporal Chart视图</td>
-                                <td>该视图展示了选定店铺的基本评分情况</td>
-                            </tr>
-                            <tr>
-                                <td>Word ChartRegion DataVis视图</td>
-                                <td>该视图展示了各个流域的选定指标的月平均情况</td>
-                            </tr>
-                        </table>
-                        <code>3. 总结：</code>
-                        <dl>
-                            <dt>数据获取</dt>
-                            <dd>· chrome不支持本地file协议，所以需要自建服务器或结合Server-Based IDE使用</dd>
-                            <dt>数据处理</dt>
-                            <dd>· 由于能力、时间等原因，本次数据可视化未作代码优化工作，很多数据还有待优化，敬请谅解！</dd>
-                            <dt>可视化展示</dt>
-                            <dd>· 开始想用响应式布局，但是越到后面越懵逼，现在只是尽量做了适配，经测试在1920x1080的显示器上有最佳效果，在大部分分辨率上显示较为正常！</dd>
-                        </dl>
+                </div>
+                <div class="layui-row layui-col-space15" style="background-color: #F2F2F2;">
+                    <div class="layui-col-md4" id="tempral-parent">
+                        <div class="layui-card">
+                            <div class="layui-card-header">
+                                <div class="layui-row">
+                                    <div class="layui-col-md4">Temporal Chart</div>
+                                    <div class="layui-col-md1 layui-col-md-offset6">
+                                        <select id="year" class="selectpicker show-tick form-control" style="width:auto; height: auto" data-live-search="true">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-card-body" id="temporal-chart">
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                    <div class="layui-col-md4">
+                        <div class="layui-card">
+                            <div class="layui-card-header">Radar Chart</div>
+                            <div class="layui-card-body" id="radar">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md4">
+                        <div class="layui-card">
+                            <div class="layui-card-header">Word Chart</div>
+                            <div class="layui-card-body" id="cloud">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button id="floatbtn" class="btn btn-success btn-circle btn-xl" data-placement="top" data-toggle="popover" data-trigger="hover" data-target="#myModal"></button>
+            <div class="modal fade" id="myModal">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title"><a href="http://176.122.131.25:8089/VisTaskData/Visualization/html/visualization.html"> 评论数据可视化 </a></h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            首先灰常感谢您在漫长的加载后观看<a class=".text-center .font-italic" href="#"> 西南科技大学软件1606 🐮🍺小组 </a> 推出的的评论数据可视化作品（欢迎在Github上给我们个Star：<a class=".text-center .font-italic" href="https://github.com/Dreamcreationman/VisTask" target="_blank"> Github传送门 </a>），由于需要加载的文件较多并且包含在线js，故需要配合WS或者HBuilder等并联网观看。其中有一些重要的问题需要指出：</br></br>
+                            <code>1. 框架：</code>
+                            UI采用Layui+Boostrap4尽量构建多显示器适配，主要使用d3构建整体逻辑和动画过渡（由于时间问题没做多少），采用colorbrewer作为主要配色方案，Git做主要的代码协同。</br>
+                            <code>2. 提示：</code>
+                            <table border="1">
+                                <tr>
+                                    <td>Map Chart视图</td>
+                                    <td>该视图展示各个店铺的具体空间位置</td>
+                                </tr>
+                                <tr>
+                                    <td>Temporal Chart视图</td>
+                                    <td>该视图展示选定站点一年以来的具体评论情况</td>
+                                </tr>
+                                <tr>
+                                    <td>Temporal Chart视图</td>
+                                    <td>该视图展示了选定店铺的基本评分情况</td>
+                                </tr>
+                                <tr>
+                                    <td>Word ChartRegion DataVis视图</td>
+                                    <td>该视图展示了各个流域的选定指标的月平均情况</td>
+                                </tr>
+                            </table>
+                            <code>3. 总结：</code>
+                            <dl>
+                                <dt>数据获取</dt>
+                                <dd>· chrome不支持本地file协议，所以需要自建服务器或结合Server-Based IDE使用</dd>
+                                <dt>数据处理</dt>
+                                <dd>· 由于能力、时间等原因，本次数据可视化未作代码优化工作，很多数据还有待优化，敬请谅解！</dd>
+                                <dt>可视化展示</dt>
+                                <dd>· 开始想用响应式布局，但是越到后面越懵逼，现在只是尽量做了适配，经测试在1920x1080的显示器上有最佳效果，在大部分分辨率上显示较为正常！</dd>
+                            </dl>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-</div>
-<div id="hobby" class="hobby layui-form">
-    <div class="hobby-item">消费：<div id="cost" style="padding-top: 5px"></div></div>
-    <div class="hobby-item">味道：<div id="taste" style="padding-top: 5px"></div></div>
-    <div class="hobby-item">环境：<div id="environment" style="padding-top: 5px"></div></div>
-    <div class="hobby-item">服务：<div id="service" style="padding-top: 5px"></div></div>
-    <label class="layui-form-label">范围</label>
-     <div class="layui-input-block">
-      <input type="number" lay-verify="number"  id="rank" value="3" autocomplete="off" class="layui-input" style="padding-top: 5px">
-    </div>
-</div>
+        <div id="hobby" class="hobby layui-form">
+            <div class="hobby-item">消费：<div id="cost" style="padding-top: 5px"></div>
+            </div>
+            <div class="hobby-item">味道：<div id="taste" style="padding-top: 5px"></div>
+            </div>
+            <div class="hobby-item">环境：<div id="environment" style="padding-top: 5px"></div>
+            </div>
+            <div class="hobby-item">服务：<div id="service" style="padding-top: 5px"></div>
+            </div>
+            <label class="layui-form-label">范围</label>
+            <div class="layui-input-block">
+                <input type="number" lay-verify="number" id="rank" value="3" autocomplete="off" class="layui-input" style="padding-top: 5px">
+            </div>
+        </div>
 </body>
 <script>
 //JavaScript代码区域
@@ -175,115 +212,116 @@ var global_type = "咖啡厅 "
 var rank = 10
 var resData
 var map
-layui.use(['element', 'layer', 'slider', 'form'], function(){
-  var element = layui.element;
-  var slider = layui.slider;
-  var form = layui.form;
+layui.use(['element', 'layer', 'slider', 'form'], function() {
+    var element = layui.element;
+    var slider = layui.slider;
+    var form = layui.form;
 
-  //监听提交
-  form.on('submit(formDemo)', function(data){
-    layer.msg(JSON.stringify(data.field));
-    return false;
-  });
-  slider.render({
-    elem: '#cost',  //绑定元素
-      max:10,
-      value:10,
-      theme: "#017BFF",
-      setTips: function(value){ //自定义提示文本
-        return '消费权重为：'+value;
-      },
-      change: function(value){
-        cost = value[1]
-        //do something
-      }
-  });
-  slider.render({
-    elem: '#taste',  //绑定元素
-      max:10,
-      value:10,
-      theme: "#FFC107",
-      setTips: function(value){ //自定义提示文本
-        return '口味权重为：'+value;
-      },
-      change: function(value){
-        taste = value[1]
-        //do something
-      }
-  });
-  slider.render({
-    elem: '#environment',  //绑定元素
-      max:10,
-      value:10,
-      theme: "#28A745",
-      setTips: function(value){ //自定义提示文本
-        return '环境权重为：'+value;
-      },
-      change: function(value){
-        environment = value[1]
-        //do something
-      }
-  });
-  slider.render({
-    elem: '#service',  //绑定元素
-      max:10,
-      value:10,
-      theme: "#DB3444",
-      setTips: function(value){ //自定义提示文本
-        return '服务权重为：'+value;
-      },
-      change: function(value){
-        service = value[1]
-        //do something
-      }
-  });
-   var layer = layui.layer;
+    //监听提交
+    form.on('submit(formDemo)', function(data) {
+        layer.msg(JSON.stringify(data.field));
+        return false;
+    });
+    slider.render({
+        elem: '#cost', //绑定元素
+        max: 10,
+        value: 10,
+        theme: "#017BFF",
+        setTips: function(value) { //自定义提示文本
+            return '消费权重为：' + value;
+        },
+        change: function(value) {
+            cost = value[1]
+            //do something
+        }
+    });
+    slider.render({
+        elem: '#taste', //绑定元素
+        max: 10,
+        value: 10,
+        theme: "#FFC107",
+        setTips: function(value) { //自定义提示文本
+            return '口味权重为：' + value;
+        },
+        change: function(value) {
+            taste = value[1]
+            //do something
+        }
+    });
+    slider.render({
+        elem: '#environment', //绑定元素
+        max: 10,
+        value: 10,
+        theme: "#28A745",
+        setTips: function(value) { //自定义提示文本
+            return '环境权重为：' + value;
+        },
+        change: function(value) {
+            environment = value[1]
+            //do something
+        }
+    });
+    slider.render({
+        elem: '#service', //绑定元素
+        max: 10,
+        value: 10,
+        theme: "#DB3444",
+        setTips: function(value) { //自定义提示文本
+            return '服务权重为：' + value;
+        },
+        change: function(value) {
+            service = value[1]
+            //do something
+        }
+    });
+    var layer = layui.layer;
     layer.msg('欢迎来到评论数据可视化界面');
     layer.open({
-      type: 1,
-        btn:['确定'],
-        title:'个人偏好设置',
+        type: 1,
+        btn: ['确定'],
+        title: '个人偏好设置',
         skin: 'demo-class',
         area: ['530px', '360px'],
         offset: 'l',
-        shade :0,
-        closeBtn :2,
-        scrollbar:false,
-      content: $('#hobby') , //这里content是一个普通的String
-        yes: function(index, layero){
+        shade: 0,
+        closeBtn: 2,
+        scrollbar: false,
+        content: $('#hobby'), //这里content是一个普通的String
+        yes: function(index, layero) {
             //do something
             getBestTen(cost, taste, environment, service, global_type, resData, map)
             //layer.close(index); //如果设定了yes回调，需进行手工关闭
-          }
+        }
     });
 });
-d3.csv("../data/item2.csv", function (err, res) {
-  if (err)
-    return
-  var types = getTypes(res)
-  var typecolor = d3.scale.quantize()
-            .domain([0, types.length])
-            .range(["#8dd3c7","#ffffb3","#bebada","#fb8072","#80b1d3","#fdb462","#b3de69","#fccde5","#d9d9d9","#bc80bd","#ccebc5","#ffed6f"]);
+d3.csv("../data/item2.csv", function(err, res) {
+    if (err)
+        return
+    var types = getTypes(res)
+    var typecolor = d3.scale.quantize()
+        .domain([0, types.length])
+        .range(["#8dd3c7", "#ffffb3", "#bebada", "#fb8072", "#80b1d3", "#fdb462", "#b3de69", "#fccde5", "#d9d9d9", "#bc80bd", "#ccebc5", "#ffed6f"]);
 
-  for (var i = 0; i < types.length; i++) {
-    var select = document.getElementById("type")
-    var option = document.createElement("option")
-    option.innerHTML = types[i]
-    option.style.color = typecolor(i)
-    select.append(option)
-  }
+    for (var i = 0; i < types.length; i++) {
+        var select = document.getElementById("type")
+        var option = document.createElement("option")
+        option.innerHTML = types[i]
+        option.style.color = typecolor(i)
+        select.append(option)
+    }
 })
 </script>
 <script src="../js/radar-chart.js"></script>
 <script src="../js/d3.layout.cloud.js"></script>
 <script type="text/javascript">
-	RadarChart.defaultConfig.color = function() {return '#EB7347'};
-	RadarChart.defaultConfig.radius = 5;	// 绘制点的半径
+RadarChart.defaultConfig.color = function() { return '#EB7347' };
+RadarChart.defaultConfig.radius = 2; // 绘制点的半径
 </script>
 <script src="../js/radarDraw.js"></script>
 <script type="text/javascript" src="../js/temporal_chart.js"></script>
 <script src="../js/cloudDraw.js"></script>
 <script type="text/javascript" src="../js/map_chart.js"></script>
 <script type="text/javascript" src="../js/run.js"></script>
-<script src="../js/floatbutton.js" type="text/javascript" ></script>
+<script src="../js/floatbutton.js" type="text/javascript"></script>
+
 </html>
