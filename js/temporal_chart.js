@@ -83,10 +83,11 @@ function draw_calendar_chart(width, height, cellSize, item_id, year, containerId
             })
             .on("mouseover", function(d) {
                 item = getInfoByTime(datas, d)
+                var name = item.user_name==null?"匿名用户":item.user_name
                 tooltip.html("<div class='comment-container'>" +
                         "<div class='comment-img pull-left'><img src='" + item.user_pic + "' class='header' onerror=\"" + "this.src='../img/default.png'" + "\"/></div>" +
                         "<div class='comment-view pull-left'>" +
-                        "<span class='name'>匿名用户</span>" +
+                        "<span class='name'>"+name+"</span>" +
                         "<span class='name'>&nbsp;&nbsp;|&nbsp;&nbsp;</span>" +
                         "<img src='../img/level.png' style='width: 20px; height: 20px;display: inline;padding: 0, margin: 0' />" +
                         "<font color='yellow'>" + item.user_rank + "</font>" +
