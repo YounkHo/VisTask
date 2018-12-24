@@ -1,4 +1,4 @@
-draw_calendar_chart(document.getElementById("tempral-parent").offsetWidth,document.getElementById("tempral-parent").offsetHeight,document.getElementById("tempral-parent").offsetWidth/60,"18022345", 2015,"temporal-chart")
+draw_calendar_chart(document.getElementById("tempral-parent").offsetWidth,7*document.getElementById("tempral-parent").offsetWidth/60+50,document.getElementById("tempral-parent").offsetWidth/60,"18022345", 2015,"temporal-chart")
 drawRadar("radar", "18022345")
 drawMap("map-chart", global_type)
 drawCloud("cloud","18022345")
@@ -61,7 +61,7 @@ function drawMap(viewId, type) {
                 document.getElementById("item_id").value = item.item_id
                 document.getElementById("title").style.color = typecolor(typedata.indexOf(item.item_type))
                 document.getElementById("title").innerHTML = item.name
-                draw_calendar_chart(document.getElementById("tempral-parent").offsetWidth,document.getElementById("tempral-parent").offsetHeight,document.getElementById("tempral-parent").offsetWidth/60,item.item_id, parseInt($("#year").children('option:selected').val()),"temporal-chart")
+                draw_calendar_chart(document.getElementById("tempral-parent").offsetWidth,7*document.getElementById("tempral-parent").offsetWidth/60+50,document.getElementById("tempral-parent").offsetWidth/60,item.item_id, parseInt($("#year").children('option:selected').val()),"temporal-chart")
                 drawCloud("cloud",item.item_id)
                 drawRadar("radar", item.item_id)
                 d3.csv("../data/hty/useritem.csv", function(err, csv) {
